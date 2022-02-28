@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaGames.Data.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class MovieSubmissionController : ControllerBase
     {
@@ -23,6 +23,29 @@ namespace CinemaGames.Data.Controllers
         {
 
             return _db.MovieSubmissions.Select(ms => new MovieSubmissionViewModel()
+            {
+                Id = ms.Id,
+                PlayerId = ms.PlayerId,
+                Player = ms.Player,
+                MatchId = ms.MatchId,
+                Match = new MatchViewModel()
+                {
+                    Id = ms.Match.Id,
+                    Name = ms.Match.Name,
+                    FullName = $"{ms.Match.Season.Name} - {ms.Match.Name}"
+                },
+                Title = ms.Title,
+                ReasonToChoose = ms.ReasonToChoose,
+                Synopsis = ms.Synopsis,
+                Trailer = ms.Trailer
+            }).AsEnumerable();
+        }
+
+        [HttpGet( Name = "GetMovieSubmissionsForCurrentMatch")]
+        public IEnumerable<MovieSubmissionViewModel> GetForCurrentMatch()
+        {
+
+            return _db.MovieSubmissions.Where(m => m.Match.IsCurrent).Select(ms => new MovieSubmissionViewModel()
             {
                 Id = ms.Id,
                 PlayerId = ms.PlayerId,

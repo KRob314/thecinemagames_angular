@@ -27,7 +27,7 @@ export class MovieSubmissionComponent implements OnInit {
   {
     this.getPlayers();
     this.getMatches();
-    this.getMovieSubmissions();
+    this.getMovieSubmissionsForCurrentMatch();
   }
 
   toggleEdit(): void
@@ -48,6 +48,11 @@ export class MovieSubmissionComponent implements OnInit {
   getMovieSubmissions(): void
   {
     this.movieSubmissionService.getMovieSubmissions().subscribe(m => this.movieSubmissions = m);
+  }
+
+  getMovieSubmissionsForCurrentMatch(): void
+  {
+    this.movieSubmissionService.getMovieSubmissionsForCurrentSeason().subscribe(m => this.movieSubmissions = m);
   }
 
   add(): void

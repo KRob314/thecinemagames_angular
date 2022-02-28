@@ -23,7 +23,16 @@ export class MovieSubmissionService {
 
   getMovieSubmissions(): Observable<MovieSubmission[]>
   {
-    return this.http.get<MovieSubmission[]>(this.movieSubmissionUrl)
+    return this.http.get<MovieSubmission[]>(this.movieSubmissionUrl + '/Get')
+      .pipe(
+        tap(_ => this.log('fetched movieSubmissions')),
+        catchError(this.handleError<MovieSubmission[]>('getMovieSubmissions', []))
+      );
+  }
+
+  getMovieSubmissionsForCurrentSeason(): Observable<MovieSubmission[]>
+  {
+    return this.http.get<MovieSubmission[]>(this.movieSubmissionUrl + '/GetForCurrentMatch')
       .pipe(
         tap(_ => this.log('fetched movieSubmissions')),
         catchError(this.handleError<MovieSubmission[]>('getMovieSubmissions', []))
