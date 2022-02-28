@@ -1,0 +1,87 @@
+<h1>
+  Movie Submissions <button type="button" class="btn btn-light btn-outline-dark btn-sm" (click)="toggleEdit()">Edit</button>
+</h1>
+
+
+<div class="row margin-t-10">
+  <div class="col">
+    <select [(ngModel)]="movieSubmission.playerId" class="form-select">
+      <option *ngFor="let p of players" [ngValue]="p.id">{{p.firstName}}</option>
+    </select>
+  </div>
+  <div class="col">
+    <select [(ngModel)]="movieSubmission.matchId" class="form-select">
+      <option *ngFor="let m of matches" [ngValue]="m.id">{{m.season?.name}} - {{m.name}}</option>
+    </select>
+  </div>
+  <div class="col">
+    <input type="text" placeholder="Movie" class="form-control" [(ngModel)]="movieSubmission.title" />
+  </div>
+  <div class="col">
+    <input type="text" placeholder="Trailer" class="form-control" [(ngModel)]="movieSubmission.trailer" />
+  </div>
+  <div class="col">
+    <input type="text" placeholder="Reason" class="form-control" [(ngModel)]="movieSubmission.reasonToChoose" />
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary" (click)="add()">Add New</button>
+  </div>
+</div>
+
+
+<table class="table table-bordered table-hover table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Match</th>
+      <th>Title</th>
+      <th>Trailer</th>
+      <th>Reason</th>
+      <th>Synopsis</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ms of movieSubmissions | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <td>{{ms.player?.firstName}} </td>
+      <td>
+        {{ms.match?.fullName}}
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="ms.title" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{ms.title}}</span>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="ms.trailer" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{ms.trailer}}</span>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="ms.reasonToChoose" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{ms.reasonToChoose}}</span>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="ms.synopsis" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{ms.synopsis}}</span>
+      </td>
+      <td>
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-primary" title="save" (click)="save(ms)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+              <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z" />
+            </svg>
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-danger" title="delete" (click)="delete(ms)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+            </svg>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ngb-pagination class="d-flex justify-content-start" [(page)]="page" [pageSize]="pageSize" [collectionSize]="movieSubmissions.length" [maxSize]="15"></ngb-pagination>
+
+
+<router-outlet></router-outlet>

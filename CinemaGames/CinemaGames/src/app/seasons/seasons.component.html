@@ -1,0 +1,79 @@
+<h1>
+  Seasons
+  <button type="button" class="btn btn-light btn-outline-dark btn-sm" (click)="toggleEdit()">Edit</button>
+</h1>
+
+
+<div class="row">
+  <div class="col">
+    <input type="text" placeholder="Name" class="form-control" [(ngModel)]="season.name" />
+  </div>
+  <div class="col">
+    <input type="date" placeholder="Start Date" class="form-control" [ngModel]="season.startDate  | date:'yyyy-MM-dd'" (ngModelChange)="season.startDate = $event" />
+  </div>
+  <div class="col">
+    <input type="date" placeholder="End Date" class="form-control" [ngModel]="season.endDate  | date:'yyyy-MM-dd'" (ngModelChange)="season.endDate = $event" />
+  </div>
+  <div class="col">
+    <div class="form-check">
+      <input type="checkbox" title="Is current season" class="form-check-input" [(ngModel)]="season.isCurrent" />
+      <label class="form-check-label" >
+        Current
+      </label>
+    </div>
+
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary" (click)="add()">Add New</button>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Current</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let season of seasons">
+      <td>
+        <input type="text" [(ngModel)]="season.name" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{season.name}}</span>
+      </td>
+      <td>
+        <input type="date" [ngModel]="season.startDate | date:'yyyy-MM-dd'" (ngModelChange)="season.startDate = $event" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{season.startDate | date:'dd-MM-yyyy'}}</span>
+      </td>
+      <td>
+        <input type="date" [ngModel]="season.endDate | date:'yyyy-MM-dd'" (ngModelChange)="season.endDate = $event" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{season.endDate | date:'dd-MM-yyyy'}}</span>
+      </td>
+      <td>
+        <div [ngClass]="!isEdit ? 'visually-hidden' : ''">
+          <input type="checkbox" title="Is current season" class="form-check-input" [(ngModel)]="season.isCurrent" />
+        </div>
+        <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{season.isCurrent}}</span>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" title="save" (click)="save(season)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+            <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z" />
+          </svg>
+        </button>
+        &nbsp;
+        <button type="button" class="btn btn-danger" title="delete" (click)="delete(season)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+          </svg>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<router-outlet></router-outlet>

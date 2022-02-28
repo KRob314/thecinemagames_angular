@@ -1,0 +1,47 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-4">the cinema games</span>
+  </a>
+  <hr>
+  <ul class="nav  nav-pills flex-column mb-auto">
+    <li class="nav-item"
+        [routerLinkActive]="['link-active']"
+        [routerLinkActiveOptions]="{ exact: true }">
+      <a class="nav-link text-light" [routerLink]="['/']">Home</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-light" [routerLink]="['/dashboard']">Dashboard</a>
+    </li>
+  </ul>
+  <hr>
+  <ul class="nav  nav-pills flex-column mb-auto">
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-light" [routerLink]="['/genres']">Genres</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-light" [routerLink]="['/seasons']">Seasons</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-light" [routerLink]="['/matches']">Matches</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-light" [routerLink]="['/movieSubmissions']">Movie Submissions</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+      <a class="nav-link text-light" [routerLink]="['/movieRatings']">Movie Ratings</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</div>
