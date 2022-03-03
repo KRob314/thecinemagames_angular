@@ -21,6 +21,8 @@ export class MatchesComponent implements OnInit {
   statuses = [{ id: 1, name: 'Open For Movie Submission' }, { id: 2, name: 'Open For Voting' }, { id: 3, name: 'Unavailable' }, {id: 4, name: 'Closed'}]
   selectedGenre = null;
   isEdit: boolean = false;
+  pageSize: number = 10;
+  page: number = 1;
 
   constructor(private matchService: MatchService, private genreService: GenreService, private seasonService: SeasonService, private toastService: AppToastService) { }
 

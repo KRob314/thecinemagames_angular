@@ -39,7 +39,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let match of matches">
+    <tr *ngFor="let match of matches | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
       <td>
         <input type="text" [(ngModel)]="match.name" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
         <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{match.name}}</span>
@@ -93,6 +93,7 @@
     </tr>
   </tbody>
 </table>
+<ngb-pagination class="d-flex justify-content-start" [(page)]="page" [pageSize]="pageSize" [collectionSize]="matches.length" [maxSize]="15"></ngb-pagination>
 
 
 <router-outlet></router-outlet>

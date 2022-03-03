@@ -1,300 +1,450 @@
-
-
-
-  <header class="header">
-    <div class="header--empty"></div>
-    <a href="/">
-      <img src="/assets/images/logo.svg" alt="cinema games logo">
-    </a>
-    <button>Logout</button>
-  </header>
-  <main class="dashboard">
-    <nav class="dashboard__header">
-      <h2>Season 5</h2>
-      <h2>Week 8</h2>
-      <div class="dashboard__header--imgs">
-        <img src="/assets/images/rankings.svg" />
-        <img src="/assets/images/chat.svg" />
-        <img src="/assets/images/trophy.svg" />
-      </div>
-    </nav>
-    <div class="dashboard__cta">
-      <h3>Week 8</h3>
-      <p>Superhero</p>
-      <div class="dashboard__cta--stats">
-        <p>Open</p>
-        <p>0/8</p>
-        <h4 class="color-good">3d 18h</h4>
-      </div>
-      <div class="dashboard__cta--description">
-        <h5>
-          Superhero
-          <span>- Any movie that has elements of superpowers</span>
-        </h5>
-        <button class="button">Go to submit movie</button>
-      </div>
-    </div>
-    <ul class="dashboard__items">
-      <li class="dashboard__items--item">
-        <h3>Week 7</h3>
-        <p>Thriller</p>
-        <p>28 pts</p>
-        <h4>5th</h4>
-      </li>
-      <li class="dashboard__items--item">
-        <h3>Week 6</h3>
-        <p>Documentary</p>
-        <p>47 pts</p>
-        <h4>2nd</h4>
-      </li>
-      <li class="dashboard__items--item">
-        <h3>Week 5</h3>
-        <p>Comedy</p>
-        <p>54 pts</p>
-        <h4>1st</h4>
-      </li>
-      <li class="dashboard__items--item">
-        <h3>Week 4</h3>
-        <p>Man vs. Nature</p>
-        <p>51 pts</p>
-        <h4>1st</h4>
-      </li>
-      <li class="dashboard__items--item dashboard__items--active">
-        <h3>Week 3</h3>
-        <p>Action</p>
-        <p>39 pts</p>
-        <h4>3rd</h4>
-        <div class="dashboard__items__summary">
-          <div class="dashboard__items__summary--results">
-            <h5>Week 3 Results</h5>
-            <table>
-              <thead>
-                <tr>
-                  <td>Rank</td>
-                  <td>Movie Title</td>
-                  <td>Points</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Shazam!</td>
-                  <td>51</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>The Outpost</td>
-                  <td>47</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>The Revenant</td>
-                  <td>39</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Mission Impossible III</td>
-                  <td>38</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="dashboard__items__summary--nav">
-            <span class="active"></span>
-            <span></span>
-          </div>
-
-          <hr />
-          <div class="dashboard__items__summary--votes">
-            <h5>Week 3 Votes</h5>
-            <table>
-              <thead>
-                <tr>
-                  <td>Points</td>
-                  <td>Movie Title</td>
-                  <td>Reason</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>8</td>
-                  <td>The Revenant</td>
-                  <td><button>show</button></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Shazam!</td>
-                  <td><button>show</button></td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Training Day</td>
-                  <td><button>show</button></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>S.W.A.T.</td>
-                  <td><button>show</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="dashboard__items__summary--nav">
-            <span></span>
-            <span class="active"></span>
-          </div>
-          <hr />
-          <div class="dashboard__items__summary--votes-detail">
-            <h5>Week 3 Votes</h5>
-            <div class="dashboard__items__summary--votes-note">
-              <h6>Reason</h6>
-              <p class="dashboard__items__summary--votes-note-title">Training Day</p>
-              <p>
-                Denzel's GREATEST acting performance ever.
-                He won the Oscar for BEST ACTOR because of his legendary role in this movie.
-                but dont let Denzel's performance overshadow ethan hawke's own oscar level performance.
-                Amazing chemistry.
-              </p>
-              <button>
-                <!--<Close class=""></Close>-->
-              </button>
+<main class="">
+  <div class="accordion dashboard__items" id="accordion" *ngFor="let ss of seasonSummaries; let i = index;">
+    <div class="accordion-item dashboard__items--item">
+      <h2 class="accordion-header" id={{getAccordionHeader(i)}}>
+        <button class="accordion-button text-main collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]=getCollapseIdWithHash(i) aria-expanded="false" [attr.aria-controls]=getCollapseId(i)>
+          <div class="row" style="width:100%;">
+            <div class="col-sm-3">
+              <h3>{{ss.matchName}}</h3>
+            </div>
+            <div class="col-sm-3">
+              <p>{{ss.genreName}}</p>
+            </div>
+            <div class="col-sm-3">
+              <p>{{ss.matchPoints}} pts</p>
+            </div>
+            <div class="col-sm-3">
+              <h4 *ngIf="ss.matchStatus.indexOf('Open') > -1; else matchPlace" class="color-good">{{ss.matchTimeLeft}}</h4>
+              <ng-template #matchPlace>5th</ng-template>
+              
             </div>
           </div>
-          <div class="dashboard__items__summary--nav">
-            <span></span>
-            <span class="active"></span>
+        </button>
+      </h2>
+      <div [id]=getCollapseId(i) class="accordion-collapse collapse bg-main-light" [attr.aria-labelledby]=getAccordionHeader(i) data-bs-parent="#accordion" >
+        <div class="accordion-body">
+          <div *ngIf="ss.matchStatus.indexOf('Open') > -1; else summary">
+            <div *ngIf="ss.matchStatus == 'Open For Movie Submission'">
+              <button type="button" class="button">Submit Movie</button>
+            </div>
+            <div *ngIf="ss.matchStatus == 'Open For Voting'">
+              <button type="button" class="button">Submit Votes</button>
+            </div>
+          </div>
+          <ng-template #summary>
+            <div class="dashboard__items__summary">
+              <div class="dashboard__items__summary--results">
+                <h5>Week 3 Results</h5>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Rank</td>
+                      <td>Movie Title</td>
+                      <td>Points</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Shazam!</td>
+                      <td>51</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>The Outpost</td>
+                      <td>47</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>The Revenant</td>
+                      <td>39</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Mission Impossible III</td>
+                      <td>38</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="dashboard__items__summary--nav">
+                <span class="active"></span>
+                <span></span>
+              </div>
+
+              <hr />
+              <div class="dashboard__items__summary--votes">
+                <h5>Week 3 Votes</h5>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Points</td>
+                      <td>Movie Title</td>
+                      <td>Reason</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>8</td>
+                      <td>The Revenant</td>
+                      <td><button>show</button></td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Shazam!</td>
+                      <td><button>show</button></td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Training Day</td>
+                      <td><button>show</button></td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>S.W.A.T.</td>
+                      <td><button>show</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="dashboard__items__summary--nav">
+                <span></span>
+                <span class="active"></span>
+              </div>
+              <hr />
+              <div class="dashboard__items__summary--votes-detail">
+                <h5>Week 3 Votes</h5>
+                <div class="dashboard__items__summary--votes-note">
+                  <h6>Reason</h6>
+                  <p class="dashboard__items__summary--votes-note-title">Training Day</p>
+                  <p>
+                    Denzel's GREATEST acting performance ever.
+                    He won the Oscar for BEST ACTOR because of his legendary role in this movie.
+                    but dont let Denzel's performance overshadow ethan hawke's own oscar level performance.
+                    Amazing chemistry.
+                  </p>
+                  <button>
+                    <!--<Close class=""></Close>-->
+                  </button>
+                </div>
+              </div>
+              <div class="dashboard__items__summary--nav">
+                <span></span>
+                <span class="active"></span>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<main class="dashboard">
+  <ul class="dashboard__items">
+    <li class="dashboard__items--item" *ngFor="let ss of seasonSummaries" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <h3>{{ss.matchName}}</h3>
+      <p>{{ss.genreName}}</p>
+      <p>{{ss.matchPoints}} pts</p>
+      <h4>5th</h4>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+        </div>
+      </div>
+    </li>
+  </ul>
+</main>
+
+
+<main class="dashboard">
+  <nav class="dashboard__header">
+    <h2>Season 5</h2>
+    <h2>Week 8</h2>
+    <div class="dashboard__header--imgs">
+      <img src="/assets/images/rankings.svg" />
+      <img src="/assets/images/chat.svg" />
+      <img src="/assets/images/trophy.svg" />
+    </div>
+  </nav>
+  <div class="dashboard__cta">
+    <h3>Week 8</h3>
+    <p>Superhero</p>
+    <div class="dashboard__cta--stats">
+      <p>Open</p>
+      <p>0/8</p>
+      <h4 class="color-good">3d 18h</h4>
+    </div>
+    <div class="dashboard__cta--description">
+      <h5>
+        Superhero
+        <span>- Any movie that has elements of superpowers</span>
+      </h5>
+      <button class="button">Go to submit movie</button>
+    </div>
+  </div>
+  <ul class="dashboard__items">
+    <li class="dashboard__items--item">
+      <h3>Week 7</h3>
+      <p>Thriller</p>
+      <p>28 pts</p>
+      <h4>5th</h4>
+    </li>
+    <li class="dashboard__items--item">
+      <h3>Week 6</h3>
+      <p>Documentary</p>
+      <p>47 pts</p>
+      <h4>2nd</h4>
+    </li>
+    <li class="dashboard__items--item">
+      <h3>Week 5</h3>
+      <p>Comedy</p>
+      <p>54 pts</p>
+      <h4>1st</h4>
+    </li>
+    <li class="dashboard__items--item">
+      <h3>Week 4</h3>
+      <p>Man vs. Nature</p>
+      <p>51 pts</p>
+      <h4>1st</h4>
+    </li>
+    <li class="dashboard__items--item dashboard__items--active">
+      <h3>Week 3</h3>
+      <p>Action</p>
+      <p>39 pts</p>
+      <h4>3rd</h4>
+      <div class="dashboard__items__summary">
+        <div class="dashboard__items__summary--results">
+          <h5>Week 3 Results</h5>
+          <table>
+            <thead>
+              <tr>
+                <td>Rank</td>
+                <td>Movie Title</td>
+                <td>Points</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Shazam!</td>
+                <td>51</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>The Outpost</td>
+                <td>47</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>The Revenant</td>
+                <td>39</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Mission Impossible III</td>
+                <td>38</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dashboard__items__summary--nav">
+          <span class="active"></span>
+          <span></span>
+        </div>
+
+        <hr />
+        <div class="dashboard__items__summary--votes">
+          <h5>Week 3 Votes</h5>
+          <table>
+            <thead>
+              <tr>
+                <td>Points</td>
+                <td>Movie Title</td>
+                <td>Reason</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8</td>
+                <td>The Revenant</td>
+                <td><button>show</button></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Shazam!</td>
+                <td><button>show</button></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Training Day</td>
+                <td><button>show</button></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>S.W.A.T.</td>
+                <td><button>show</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dashboard__items__summary--nav">
+          <span></span>
+          <span class="active"></span>
+        </div>
+        <hr />
+        <div class="dashboard__items__summary--votes-detail">
+          <h5>Week 3 Votes</h5>
+          <div class="dashboard__items__summary--votes-note">
+            <h6>Reason</h6>
+            <p class="dashboard__items__summary--votes-note-title">Training Day</p>
+            <p>
+              Denzel's GREATEST acting performance ever.
+              He won the Oscar for BEST ACTOR because of his legendary role in this movie.
+              but dont let Denzel's performance overshadow ethan hawke's own oscar level performance.
+              Amazing chemistry.
+            </p>
+            <button>
+              <!--<Close class=""></Close>-->
+            </button>
           </div>
         </div>
-      </li>
-      <li class="dashboard__items--item">
-        <h3>Week 2</h3>
-        <p>Nicolas Cage</p>
-        <p>28 pts</p>
-        <h4>4th</h4>
-      </li>
-      <li class="dashboard__items--item">
-        <h3>Week 1</h3>
-        <p>Action</p>
-        <p>50 pts</p>
-        <h4>1st</h4>
-      </li>
-    </ul>
+        <div class="dashboard__items__summary--nav">
+          <span></span>
+          <span class="active"></span>
+        </div>
+      </div>
+    </li>
+    <li class="dashboard__items--item">
+      <h3>Week 2</h3>
+      <p>Nicolas Cage</p>
+      <p>28 pts</p>
+      <h4>4th</h4>
+    </li>
+    <li class="dashboard__items--item">
+      <h3>Week 1</h3>
+      <p>Action</p>
+      <p>50 pts</p>
+      <h4>1st</h4>
+    </li>
+  </ul>
 
-    <aside class="dashboard__side">
-      <div class="dashboard__side__trophies">
-        <button class="button">View Trophy Case</button>
+  <aside class="dashboard__side">
+    <div class="dashboard__side__trophies">
+      <button class="button">View Trophy Case</button>
+    </div>
+    <div class="dashboard__side__standings">
+      <h2>Overall Standings</h2>
+      <hr />
+      <table>
+        <thead>
+          <tr>
+            <td>Rank</td>
+            <td>Citizen</td>
+            <td>Points</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Kyle</td>
+            <td>189</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Mike</td>
+            <td>179</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Annie</td>
+            <td>157</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Trey</td>
+            <td>156</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Brodie</td>
+            <td>155</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Julie</td>
+            <td>153</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Jonathan</td>
+            <td>153</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Madalina</td>
+            <td>151</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dashboard__side__bulletin">
+      <h2>Bulletin Board</h2>
+      <hr />
+      <div class="dashboard__side--messages">
+        <article class="dashboard__side--message my-message">
+          <p>You all stand no chance!</p>
+          <span>
+            Jonathan -
+            <time>
+              30 Sept 2021 - 11:21 PM
+            </time>
+          </span>
+        </article>
+        <article class="dashboard__side--message">
+          <p>Not if I have anything to say about it! You have yet to break the top 5 @Jonathan</p>
+          <span>
+            Madalina -
+            <time>
+              30 Sept 2021 - 11:31 PM
+            </time>
+          </span>
+        </article>
+        <article class="dashboard__side--message">
+          <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
+          <span>
+            Kyle -
+            <time>
+              30 Sept 2021 - 11:38 PM
+            </time>
+          </span>
+        </article>
+        <article class="dashboard__side--message">
+          <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
+          <span>
+            Kyle -
+            <time>
+              30 Sept 2021 - 11:38 PM
+            </time>
+          </span>
+        </article>
+        <article class="dashboard__side--message">
+          <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
+          <span>
+            Kyle -
+            <time>
+              30 Sept 2021 - 11:38 PM
+            </time>
+          </span>
+        </article>
       </div>
-      <div class="dashboard__side__standings">
-        <h2>Overall Standings</h2>
-        <hr />
-        <table>
-          <thead>
-            <tr>
-              <td>Rank</td>
-              <td>Citizen</td>
-              <td>Points</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Kyle</td>
-              <td>189</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Mike</td>
-              <td>179</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Annie</td>
-              <td>157</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Trey</td>
-              <td>156</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Brodie</td>
-              <td>155</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Julie</td>
-              <td>153</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Jonathan</td>
-              <td>153</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Madalina</td>
-              <td>151</td>
-            </tr>
-          </tbody>
-        </table>
+      <hr />
+      <div class="dashboard__side__messages--input">
+        <input placeholder="Post a message..." type="text">
+        <button>Send</button>
       </div>
-      <div class="dashboard__side__bulletin">
-        <h2>Bulletin Board</h2>
-        <hr />
-        <div class="dashboard__side--messages">
-          <article class="dashboard__side--message my-message">
-            <p>You all stand no chance!</p>
-            <span>
-              Jonathan -
-              <time>
-                30 Sept 2021 - 11:21 PM
-              </time>
-            </span>
-          </article>
-          <article class="dashboard__side--message">
-            <p>Not if I have anything to say about it! You have yet to break the top 5 @Jonathan</p>
-            <span>
-              Madalina -
-              <time>
-                30 Sept 2021 - 11:31 PM
-              </time>
-            </span>
-          </article>
-          <article class="dashboard__side--message">
-            <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
-            <span>
-              Kyle -
-              <time>
-                30 Sept 2021 - 11:38 PM
-              </time>
-            </span>
-          </article>
-          <article class="dashboard__side--message">
-            <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
-            <span>
-              Kyle -
-              <time>
-                30 Sept 2021 - 11:38 PM
-              </time>
-            </span>
-          </article>
-          <article class="dashboard__side--message">
-            <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
-            <span>
-              Kyle -
-              <time>
-                30 Sept 2021 - 11:38 PM
-              </time>
-            </span>
-          </article>
-        </div>
-        <hr />
-        <div class="dashboard__side__messages--input">
-          <input placeholder="Post a message..." type="text">
-          <button>Send</button>
-        </div>
-      </div>
-    </aside>
-  </main>
+    </div>
+  </aside>
+</main>
 

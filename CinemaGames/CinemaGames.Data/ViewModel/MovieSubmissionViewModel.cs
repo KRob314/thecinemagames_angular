@@ -15,6 +15,6 @@ namespace CinemaGames.Data.ViewModel
         public string? Synopsis { get; set; } = default!;
 
         public virtual Player Player { get; set; } = default!;
-        public MatchViewModel Match { get; set; } = default!;
+        public SeasonViewModel Match { get; set; } = default!;
     }
 }

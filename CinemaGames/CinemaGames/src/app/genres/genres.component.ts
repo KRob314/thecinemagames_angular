@@ -10,6 +10,8 @@ import { GenreService } from '../genre.service';
 export class GenresComponent implements OnInit {
   genres: Genre[] = [];
   genre: Genre = {id: 0, name: '', description: '' };
+  pageSize: number = 10;
+  page: number = 1;
 
   constructor(private genreService: GenreService) { }
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CinemaGames.Data.ViewModel
 {
-    public class MatchViewModel
+    public class SeasonViewModel
     {
         public int Id { get; set; }
         [Required]

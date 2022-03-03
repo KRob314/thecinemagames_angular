@@ -12,6 +12,8 @@ export class SeasonsComponent implements OnInit {
   seasons: Season[] = [];
   season: Season = { id: 0, name: '', startDate: new Date(Date.now()), endDate: new Date(Date.now() + 12096e5), isCurrent: true };
   isEdit: boolean = false;
+  pageSize: number = 10;
+  page: number = 1;
 
   constructor(private seasonService: SeasonService, private toastService: AppToastService) { }
 

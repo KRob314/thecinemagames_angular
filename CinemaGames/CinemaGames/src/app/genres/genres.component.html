@@ -22,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let genre of genres">
+    <tr *ngFor="let genre of genres | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
       <td><input type="text" (change)="save()" [(ngModel)]="genre.name" class="form-control" /> </td>
       <td>{{genre.description}}</td>
       <td>
@@ -41,6 +41,7 @@
     </tr>
   </tbody>
 </table>
+<ngb-pagination class="d-flex justify-content-start" [(page)]="page" [pageSize]="pageSize" [collectionSize]="genres.length" [maxSize]="15"></ngb-pagination>
 
 <!--<ul class="">
   <li *ngFor="let genre of genres">

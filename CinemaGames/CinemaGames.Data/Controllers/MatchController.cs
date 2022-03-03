@@ -21,10 +21,10 @@ namespace CinemaGames.Data.Controllers
 
         // GET: api/<MatchController>
         [HttpGet(Name = "GetMatchs")]
-        public IEnumerable<MatchViewModel> Get()
+        public IEnumerable<SeasonViewModel> Get()
         {
 
-            return _db.Matches.Select(m => new MatchViewModel()
+            return _db.Matches.Select(m => new SeasonViewModel()
             {
                 Id = m.Id,
                 Name = m.Name,
@@ -45,7 +45,7 @@ namespace CinemaGames.Data.Controllers
 
         // GET api/<MatchController>/5
         [HttpGet("{id}")]
-        public MatchViewModel Get(int id)
+        public SeasonViewModel Get(int id)
         {
             return Get().Where(g => g.Id == id).FirstOrDefault();
         }
@@ -81,6 +81,7 @@ namespace CinemaGames.Data.Controllers
                 matchTemp.Name = match.Name;
                 matchTemp.GenreId = match.GenreId;
                 matchTemp.SeasonId = match.SeasonId;
+                matchTemp.StatusId = match.StatusId;
                 matchTemp.IsCurrent = match.IsCurrent;
                 matchTemp.StartDate = match.StartDate;
                 matchTemp.EndDate = match.EndDate;

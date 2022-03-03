@@ -28,7 +28,7 @@ namespace CinemaGames.Data.Controllers
                 PlayerId = ms.PlayerId,
                 Player = ms.Player,
                 MatchId = ms.MatchId,
-                Match = new MatchViewModel()
+                Match = new SeasonViewModel()
                 {
                     Id = ms.Match.Id,
                     Name = ms.Match.Name,
@@ -51,7 +51,7 @@ namespace CinemaGames.Data.Controllers
                 PlayerId = ms.PlayerId,
                 Player = ms.Player,
                 MatchId = ms.MatchId,
-                Match = new MatchViewModel()
+                Match = new SeasonViewModel()
                 {
                     Id = ms.Match.Id,
                     Name = ms.Match.Name,

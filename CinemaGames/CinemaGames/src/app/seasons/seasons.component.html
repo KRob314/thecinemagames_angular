@@ -39,7 +39,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let season of seasons">
+    <tr *ngFor="let season of seasons | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
       <td>
         <input type="text" [(ngModel)]="season.name" [ngClass]="!isEdit ? 'visually-hidden' : ''" class="form-control" />
         <span [ngClass]="isEdit ? 'visually-hidden' : ''">{{season.name}}</span>
@@ -74,6 +74,7 @@
     </tr>
   </tbody>
 </table>
+<ngb-pagination class="d-flex justify-content-start" [(page)]="page" [pageSize]="pageSize" [collectionSize]="seasons.length" [maxSize]="15"></ngb-pagination>
 
 
 <router-outlet></router-outlet>

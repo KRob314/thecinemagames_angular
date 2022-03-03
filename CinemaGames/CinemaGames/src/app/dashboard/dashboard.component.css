@@ -555,11 +555,13 @@ button.button { display: block; min-width: 20rem; font-size: 1.4rem; height: 3re
 .dashboard { padding: 1rem; background-color: #f3f2f2; }
 
 
-.dashboard { display: grid; width: 100vw; height: 100vh; grid-template-areas:
+.dashboard { /*display: grid;*/
+             width: 100vw; height: 100vh;
+/*             grid-template-areas:
     "hdr"
     "cta"
     "dsh"
-    "img"; }
+    "img";*/ }
 
 @media (min-width: 950px) {
   body .dashboard { grid-template-areas:
@@ -602,8 +604,8 @@ button.button { display: block; min-width: 20rem; font-size: 1.4rem; height: 3re
 
   .dashboard__cta--description button { grid-column: 3/4; padding: .5rem; font-size: 1.4rem; min-height: 4rem; align-self: start; }
 
-.dashboard__items { grid-area: dsh; list-style: none; list-style-type: none; padding: 0; margin-top: 0; background-color: #ffffff; }
-  .dashboard__items .dashboard__items--item { display: grid; grid-gap: 0 .9rem; grid-template-columns: 2fr 2fr 1fr 1fr; place-content: center; place-items: center; border: 1px solid rgba(106, 62, 168, 0.3); min-height: 6rem; }
+.dashboard__items { background-color: #ffffff; }
+  .dashboard__items .dashboard__items--item { border: 1px solid rgba(106, 62, 168, 0.3);  }
     .dashboard__items .dashboard__items--item:hover { background-color: #f3f2f2; cursor: pointer; }
     .dashboard__items .dashboard__items--item h3 { margin: 0; font-weight: 400; font-size: 1.8rem; text-transform: uppercase; }
     .dashboard__items .dashboard__items--item p:nth-child(2) { justify-self: start; color: #696969; font-weight: 300; font-size: 1.2rem; }
@@ -692,3 +694,12 @@ button.button { display: block; min-width: 20rem; font-size: 1.4rem; height: 3re
   submit-vote
 
 ========================================================================== */
+
+
+/* ==========================================================================
+  
+bootstrap overrides
+
+========================================================================== */
+
+.accordion-button:not(.collapsed) { color: #6a3ea8; background-color: #fff }
