@@ -38,4 +38,9 @@ export class DashboardComponent implements OnInit {
   {
     return '#collapse_' + index
   }
+
+  getMatchId(id: number | undefined)
+  {
+    return id;
+  }
 }

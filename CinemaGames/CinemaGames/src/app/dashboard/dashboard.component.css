@@ -596,7 +596,7 @@ button.button { display: block; min-width: 20rem; font-size: 1.4rem; height: 3re
 
 .dashboard__cta h4 { font-weight: 300; font-size: 2rem; padding: 0 .2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.dashboard__cta--description { grid-column: 1 / -1; width: 100%; background-color: #F7F1FF; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid rgba(106, 62, 168, 0.3); border-bottom: 1px solid rgba(106, 62, 168, 0.3); }
+.dashboard__cta--description { color: #6a3ea8; grid-column: 1 / -1; width: 100%; background-color: #F7F1FF; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid rgba(106, 62, 168, 0.3); border-bottom: 1px solid rgba(106, 62, 168, 0.3); }
 
   .dashboard__cta--description h5 { font-weight: 700; text-align: center; padding: 1rem; font-size: 2rem; grid-column: 1/-1; align-self: end; margin: 1rem 0; }
 

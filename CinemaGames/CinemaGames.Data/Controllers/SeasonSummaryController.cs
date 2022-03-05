@@ -27,15 +27,17 @@ namespace CinemaGames.Data.Controllers
                 .Include(m => m.Status)
                 .Include(m => m.Genre)
                 .Where(m => m.Season.IsCurrent)
-                .OrderBy(m => m.StartDate);
+                .OrderByDescending(m => m.StartDate);
 
             foreach(var match in seasonMatches)
             {
                 matches.Add(new PlayerMatchSummary()
                 {
+                    MatchId = match.Id,
                     SeasonName = match.Season.Name,
                     MatchName = match.Name,
                     GenreName = match.Genre.Name,
+                    GenreDescription = match.Genre.Description,
                     MatchPoints = 10,
                     MatchStatus = match.Status.Name,
                     MatchTimeLeft = match.EndDate.Subtract(DateTime.Now).TotalDays > 2 ? 

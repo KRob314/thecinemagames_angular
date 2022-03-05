@@ -16,6 +16,8 @@ import { MovieSubmissionComponent } from './movie-submission/movie-submission.co
 import { MovieRatingsComponent } from './movie-ratings/movie-ratings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppToastComponent } from './app-toast/app-toast.component';
+import { MatchSummaryComponent } from './match-summary/match-summary.component';
+import { MatchSummaryVotesComponent } from './match-summary-votes/match-summary-votes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AppToastComponent } from './app-toast/app-toast.component';
     MovieSubmissionComponent,
     MovieRatingsComponent,
     DashboardComponent,
-    AppToastComponent
+    AppToastComponent,
+    MatchSummaryComponent,
+    MatchSummaryVotesComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule,

@@ -9,6 +9,7 @@ import { MatchesComponent } from './matches/matches.component';
 import { MovieSubmissionComponent } from './movie-submission/movie-submission.component';
 import { MovieRatingsComponent } from './movie-ratings/movie-ratings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatchSummaryComponent } from './match-summary/match-summary.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'matches', component: MatchesComponent },
   { path: 'movieSubmissions', component: MovieSubmissionComponent },
   { path: 'movieRatings', component: MovieRatingsComponent },
+  {path: 'matchSummary/:id', component: MatchSummaryComponent}
 ];
 
 @NgModule({

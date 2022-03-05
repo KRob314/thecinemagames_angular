@@ -1,0 +1,33 @@
+<h5>Week 3 Votes</h5>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <td>Player</td>
+      <td>Points</td>
+      <td>Movie Title</td>
+      <td>Reason</td>
+    </tr>
+  </thead>
+  <tbody *ngFor="let summary of matchVotes  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;  let index = index">
+    <tr>
+      <td>{{summary.playerName}}</td>
+      <td>{{summary.moviePoints}}</td>
+      <td>{{summary.movie}}</td>
+      <td>
+        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" (click)="showOffCanvas(index)">Show</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+<ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="matchVotes.length" [maxSize]="15"></ngb-pagination>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" >
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel" ></h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="movieReason">
+    
+  </div>
+</div>

@@ -16,56 +16,33 @@
             <div class="col-sm-3">
               <h4 *ngIf="ss.matchStatus.indexOf('Open') > -1; else matchPlace" class="color-good">{{ss.matchTimeLeft}}</h4>
               <ng-template #matchPlace>5th</ng-template>
-              
+
             </div>
           </div>
         </button>
       </h2>
-      <div [id]=getCollapseId(i) class="accordion-collapse collapse bg-main-light" [attr.aria-labelledby]=getAccordionHeader(i) data-bs-parent="#accordion" >
+      <div [id]=getCollapseId(i) class="accordion-collapse collapse bg-main-light" [attr.aria-labelledby]=getAccordionHeader(i) data-bs-parent="#accordion">
         <div class="accordion-body">
           <div *ngIf="ss.matchStatus.indexOf('Open') > -1; else summary">
             <div *ngIf="ss.matchStatus == 'Open For Movie Submission'">
-              <button type="button" class="button">Submit Movie</button>
+              <div class="dashboard__cta--description">
+                <h5>
+                  {{ss.genreName}}
+                  <span>- {{ss.genreDescription}}</span>
+                </h5>
+                <button class="button">Go to submit movie</button>
+              </div>            
             </div>
             <div *ngIf="ss.matchStatus == 'Open For Voting'">
               <button type="button" class="button">Submit Votes</button>
             </div>
           </div>
           <ng-template #summary>
+
             <div class="dashboard__items__summary">
               <div class="dashboard__items__summary--results">
-                <h5>Week 3 Results</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <td>Rank</td>
-                      <td>Movie Title</td>
-                      <td>Points</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Shazam!</td>
-                      <td>51</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>The Outpost</td>
-                      <td>47</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>The Revenant</td>
-                      <td>39</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Mission Impossible III</td>
-                      <td>38</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-match-summary [matchId]=getMatchId(ss.matchId)></app-match-summary>
+
               </div>
               <div class="dashboard__items__summary--nav">
                 <span class="active"></span>
@@ -74,38 +51,7 @@
 
               <hr />
               <div class="dashboard__items__summary--votes">
-                <h5>Week 3 Votes</h5>
-                <table>
-                  <thead>
-                    <tr>
-                      <td>Points</td>
-                      <td>Movie Title</td>
-                      <td>Reason</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>8</td>
-                      <td>The Revenant</td>
-                      <td><button>show</button></td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Shazam!</td>
-                      <td><button>show</button></td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Training Day</td>
-                      <td><button>show</button></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>S.W.A.T.</td>
-                      <td><button>show</button></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-match-summary-votes [matchId]=getMatchId(ss.matchId)></app-match-summary-votes>
               </div>
               <div class="dashboard__items__summary--nav">
                 <span></span>
@@ -134,7 +80,7 @@
               </div>
             </div>
           </ng-template>
-        </div>
+    </div>
       </div>
     </div>
   </div>

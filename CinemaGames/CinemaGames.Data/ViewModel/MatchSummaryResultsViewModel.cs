@@ -1,6 +1,6 @@
 ﻿namespace CinemaGames.Data.ViewModel
 {
-    public class MatchSummaryViewModel
+    public class MatchSummaryResultsViewModel
     {
         public string WeekName { get; set; } = default!;
         public int MovieRank { get; set; } = default!;

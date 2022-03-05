@@ -1,0 +1,20 @@
+<p>match-summary works!</p>
+
+    <h5>{{matchSummaries[0]?.weekName}} Results</h5>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <td>Rank</td>
+          <td>Movie Title</td>
+          <td>Points</td>
+        </tr>
+      </thead>
+      <tbody *ngFor="let summary of matchSummaries">
+        <tr>
+          <td>{{summary.movieRank}}</td>
+          <td>{{summary.movie}}</td>
+          <td>{{summary.moviePoints}}</td>
+        </tr>
+      </tbody>
+    </table>
+

@@ -7,7 +7,7 @@ namespace CinemaGames.Data.Models
         public int Id { get; set; }
         [MaxLength(100)]
         public string Name { get; set; } = default!;
-        [MaxLength(300)]
+        [MaxLength(500)]
         public string? Description { get; set; } 
     }
 }
