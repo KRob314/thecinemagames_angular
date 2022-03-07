@@ -1,0 +1,36 @@
+
+
+<div class="row container-2-col">
+  <div class="col-md-5 container-2-col-left">
+    <label class="title font-md">Movie Submission</label>
+    <div class="info">
+      <p class="txt-resize">Season</p>
+      <p style="font-weight:100" class="txt-resize"> @Model.WeekName</p>
+      <p> <b style="word-break:break-all" class="txt-resize-lg font-xxl"> Genre</b></p>
+    </div>
+    <div class="description">
+      genere description
+    </div>
+    <div class="action margin-B-10">
+      <a class="btn btn-sm tcg-txt-light" routerLink="/dashboard"><< Back to dashboard</a>
+    </div>
+  </div>
+  <div class="col-md-7 container-2-col-right">
+    <div class="container">
+      <div class="input-group">
+        <label class="lbl">Movie Title</label>
+        <input type="text" class="txtInput" />
+      </div>
+      <div class="input-group margin-T-20">
+        <label class="lbl">Reason to Choose</label>
+        <input type="text" class="txtInput" />
+        <small class="text-muted" id="txtCommentCharRemaining">characters remaining: 995</small>
+      </div>
+      <div class="input-group margin-T-20">
+        <label class="lbl">Trailer URL (optional)</label>
+        <input type="text" class="txtInput" />
+      </div>
+      <button type="submit" class="btn btn-tcg-primary float-right margin-B-20 container-2-col-submit">Submit Movie</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+table > tbody > tr > td,
+table > thead > tr > th { min-width: 75px; }
+
+.container-2-col { filter: drop-shadow(1px 6px 4px rgba(0, 0, 0, 0.25)); }
+.container-2-col-left { background-color: #F7F1FF; padding-top: 20px; padding-left: 40px; }
+  .container-2-col-left .title { color: #C5A0F9; font-size: large }
+  .container-2-col-left .info { font-weight: 200; letter-spacing: -0.015em; color: #300074; line-height: 1; font-size: 64px; margin-top: 25px; }
+    .container-2-col-left .info p { margin-bottom: 0; }
+  .container-2-col-left .description { font-size: 20px; line-height: 24px; color: #696969; margin-top: 50px; }
+  .container-2-col-left .action { font-size: 13px; line-height: 16px; color: rgba(158, 141, 182, 0.89); margin-top: 100px; }
+.container-2-col-right { background-color: #FFFFFF; }
+  .container-2-col-right .container { margin-top: 10%; margin-left: 10%; width: 80%; }
+.container-2-col-submit { margin-top: 100px; }
+
+
+
+/* ------------------  controls ---------------------------- */
+.btn-noStyle { background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit; }
+
+.btn-tcg-primary { color: #fff; background-color: #6A3EA8; border-color: #6A3EA8; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  .btn-tcg-primary:hover { background-color: #553286; color: #fff }
+
+.btn-tcg-secondary { border: 1px solid #6a3ea8; color: #6a3ea8 !important; }
+
+.txtInput { background: #F3F2F2; border: 1px solid #707070; box-sizing: border-box; width: 100%; }
+
+.lbl { font-family: Montserrat; font-style: normal; font-weight: 300; font-size: 20px; line-height: 24px; color: #6A3EA8; }
+
+textarea { width: 100%; }
+
+/* ------------------  content ---------------------------- */
+.text-primary-cg { color: #241C43 }
+.text-secondary-cg { color: #E5C491; }
+.text-info-cg { color: #6a3ea8 }
+
+.font-md { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 18px; line-height: 22px; }
+
+.bg-primary-cg { background-color: #241C43; }
+.bg-secondary-cg { background-color: #E5C491; }
+.bg-info-cg { background-color: #6a3ea8 }
+
+.tcg-txt-info { color: #6a3ea8 }
+.tcg-txt-light { color: #9E8DB6 }
+
+.font-xxl { font-size: 64px; }
+
+/* ------------------  media queries ---------------------------- */
+
+@media (max-width: 768px) {
+  .container-2-col { background-color: #F7F1FF; filter: none; }
+  .container-2-col-left { background-color: #F7F1FF; }
+    .container-2-col-left .title { color: #C5A0F9; }
+    .container-2-col-left .info { font-weight: 200; letter-spacing: -0.015em; color: #300074; line-height: 1; font-size: 24px; margin-top: 10px; }
+      .container-2-col-left .info p { margin-bottom: 0; }
+    .container-2-col-left .description { font-size: medium; line-height: 1; color: #696969; margin-top: 20px }
+    .container-2-col-left .action { font-size: 13px; line-height: 16px; color: rgba(158, 141, 182, 0.89); margin-top: 10px; }
+  .container-2-col-right { background-color: #FFFFFF; }
+    .container-2-col-right .container { margin-top: 10%; margin-left: 10%; width: 80%; }
+  .container-2-col-submit { margin-top: 20px; }
+
+  .font-xxl { font-size: 24px; }
+
+  .reasonToChose { display: none; }
+}
+

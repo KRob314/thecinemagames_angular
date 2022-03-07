@@ -202,6 +202,9 @@
     <Script Include="node_modules\bootstrap\js\src\util\sanitizer.js" />
     <Script Include="node_modules\bootstrap\js\src\util\scrollbar.js" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\admin\" />
+  </ItemGroup>
   <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

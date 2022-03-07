@@ -4,6 +4,7 @@ using CinemaGames.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaGames.Data.Migrations
 {
     [DbContext(typeof(CinemaGamesDbContext))]
-    partial class CinemaGamesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220306235508_AddSeasonStanding2")]
+    partial class AddSeasonStanding2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

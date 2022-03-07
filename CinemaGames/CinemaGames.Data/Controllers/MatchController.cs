@@ -38,7 +38,7 @@ namespace CinemaGames.Data.Controllers
                 Genre = m.Genre,
                 Status = m.Status,
                 FullName = $"{m.Season.Name} - {m.Name}"
-            }).AsEnumerable();
+            }).OrderBy(s => s.StartDate).AsEnumerable();
 
             //return _db.Matches.AsEnumerable();
         }

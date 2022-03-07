@@ -1,0 +1,83 @@
+
+
+<!--<aside class="dashboard__side">-->
+  <div class="dashboard__side__trophies">
+    <button class="button">View Trophy Case</button>
+  </div>
+  <div class="dashboard__side__standings" style="background-color: rgba(0, 0, 0, 0.05);" >
+    <h2>Overall Standings</h2>
+    <hr>
+    <table class="" >
+      <thead>
+        <tr>
+          <td>Rank</td>
+          <td>Citizen</td>
+          <td>Points</td>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let standing of seasonStandings">
+          <td> {{standing.rank}}</td>
+          <td>{{standing.playerName}}</td>
+          <td>{{standing.points}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--<div class="dashboard__side__bulletin">
+    <h2>Bulletin Board</h2>
+    <hr>
+    <div class="dashboard__side--messages">
+      <article class="dashboard__side--message my-message">
+        <p>You all stand no chance!</p>
+        <span>
+          Jonathan -
+          <time>
+            30 Sept 2021 - 11:21 PM
+          </time>
+        </span>
+      </article>
+      <article class="dashboard__side--message">
+        <p>Not if I have anything to say about it! You have yet to break the top 5 @Jonathan</p>
+        <span>
+          Madalina -
+          <time>
+            30 Sept 2021 - 11:31 PM
+          </time>
+        </span>
+      </article>
+      <article class="dashboard__side--message">
+        <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
+        <span>
+          Kyle -
+          <time>
+            30 Sept 2021 - 11:38 PM
+          </time>
+        </span>
+      </article>
+      <article class="dashboard__side--message">
+        <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
+        <span>
+          Kyle -
+          <time>
+            30 Sept 2021 - 11:38 PM
+          </time>
+        </span>
+      </article>
+      <article class="dashboard__side--message">
+        <p>I can smell my feet. It smells like @Trey movie selections for this season.</p>
+        <span>
+          Kyle -
+          <time>
+            30 Sept 2021 - 11:38 PM
+          </time>
+        </span>
+      </article>
+    </div>
+    <hr>
+    <div class="dashboard__side__messages--input">
+      <input placeholder="Post a message..." type="text">
+      <button>Send</button>
+    </div>
+  </div>-->
+<!--</aside>-->

@@ -32,18 +32,37 @@ export class MatchSummaryVotesComponent implements OnInit {
     return '';
   }
 
-  showOffCanvas(index: number)
+  showOffCanvas(summary: MatchSummaryVotes)
   {
-    var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
-    $(offcanvasElementList[1]).show();
+    console.log('showOffCanvas');
 
-    $('#movieReason').text(this.matchVotes[index].reason);
-    $('#offcanvasTopLabel').text(this.matchVotes[index].movie);
-    //var offcanvasList = offcanvasElementList.map(function (offcanvasEl)
+    var myOffcanvas : any = document.getElementById('offcanvas')
+    var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+
+    console.log(bsOffcanvas);
+    bsOffcanvas.show();
+
+    //var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+    ////$(offcanvasElementList[1]).show();
+
+    //console.log(offcanvasElementList);
+
+    $('#movieReason').text(summary.reason);
+    $('#offcanvasTopLabel').text(summary.movie);
+    //var offcanvasList = offcanvasElementList.map(function (offcanvasEl: any)
     //{
+    //  //offcanvasEl.addEventListener('hidden.bs.offcanvas', function ()
+    //  //{
+    //  //  $(offcanvasEl).hide();
+    //  //})    
     //  return new bootstrap.Offcanvas(offcanvasEl)
 
-    //})
+    //});
+
+    //$(offcanvasList[0]).show();
+
+    //console.log(offcanvasList);
+
     //$(`[offcanvasid="${index}"]`).show();
   }
 

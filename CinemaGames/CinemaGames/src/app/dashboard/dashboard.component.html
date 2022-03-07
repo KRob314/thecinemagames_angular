@@ -1,110 +1,121 @@
-<main class="">
-  <div class="accordion dashboard__items" id="accordion" *ngFor="let ss of seasonSummaries; let i = index;">
-    <div class="accordion-item dashboard__items--item">
-      <h2 class="accordion-header" id={{getAccordionHeader(i)}}>
-        <button class="accordion-button text-main collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]=getCollapseIdWithHash(i) aria-expanded="false" [attr.aria-controls]=getCollapseId(i)>
-          <div class="row" style="width:100%;">
-            <div class="col-sm-3">
-              <h3>{{ss.matchName}}</h3>
-            </div>
-            <div class="col-sm-3">
-              <p>{{ss.genreName}}</p>
-            </div>
-            <div class="col-sm-3">
-              <p>{{ss.matchPoints}} pts</p>
-            </div>
-            <div class="col-sm-3">
-              <h4 *ngIf="ss.matchStatus.indexOf('Open') > -1; else matchPlace" class="color-good">{{ss.matchTimeLeft}}</h4>
-              <ng-template #matchPlace>5th</ng-template>
+<main class="dashboard" >
+  <div class="row">
+    <div class="col-sm-9">
+      <nav class="dashboard__header text-main">
+        <h2>{{seasonSummaries[0]?.seasonName}}</h2>
+        <h2>{{seasonSummaries[0]?.matchName}}</h2>
+        <!--<div class="dashboard__header--imgs">
+      <img src="img/rankings.svg">
+      <img src="img/chat.svg">
+      <img src="img/trophy.svg">
+    </div>-->
+      </nav>
+      <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1" class="dashboard__items" *ngFor="let ss of seasonSummaries; let i = index;">
+        <ngb-panel>
+          <ng-template ngbPanelHeader>
+            <button ngbPanelToggle class="accordion-button">
+              <div class="row dashboard-header text-main" style="width:100%;">
+                <div class="col-sm-3">
+                  <h3 class="week">{{ss.matchName}}</h3>
+                </div>
+                <div class="col-sm-3 margin-t-10">
+                  <p class="genre">{{ss.genreName}}</p>
+                </div>
+                <div class="col-sm-2 margin-t-10" *ngIf="ss.matchStatus.indexOf('Open') > -1">
+                  <p class="points">{{ss.matchPoints}} pts</p>
+                </div>
+                <div class="col-sm-1 margin-t-10" *ngIf="ss.matchStatus.indexOf('Open') > -1">
+                  <p class="text-center" style="border-left: 1px solid rgba(106, 62, 168, 0.45); border-right: 1px solid rgba(106, 62, 168, 0.45) ">0/8</p>
+                </div>
+                <div class="col-sm-3 margin-t-10" *ngIf="ss.matchStatus.indexOf('Open') == -1">
+                  <p class="points">{{ss.matchPoints}} pts</p>
+                </div>
+                <div class="col-sm-3">
+                  <h4 *ngIf="ss.matchStatus.indexOf('Open') > -1; else matchPlace" class="color-good" style="font-weight:300">{{ss.matchTimeLeft}}</h4>
+                  <ng-template #matchPlace>5th</ng-template>
 
-            </div>
-          </div>
-        </button>
-      </h2>
-      <div [id]=getCollapseId(i) class="accordion-collapse collapse bg-main-light" [attr.aria-labelledby]=getAccordionHeader(i) data-bs-parent="#accordion">
-        <div class="accordion-body">
-          <div *ngIf="ss.matchStatus.indexOf('Open') > -1; else summary">
-            <div *ngIf="ss.matchStatus == 'Open For Movie Submission'">
-              <div class="dashboard__cta--description">
-                <h5>
-                  {{ss.genreName}}
-                  <span>- {{ss.genreDescription}}</span>
-                </h5>
-                <button class="button">Go to submit movie</button>
-              </div>            
-            </div>
-            <div *ngIf="ss.matchStatus == 'Open For Voting'">
-              <button type="button" class="button">Submit Votes</button>
-            </div>
-          </div>
-          <ng-template #summary>
-
-            <div class="dashboard__items__summary">
-              <div class="dashboard__items__summary--results">
-                <app-match-summary [matchId]=getMatchId(ss.matchId)></app-match-summary>
-
-              </div>
-              <div class="dashboard__items__summary--nav">
-                <span class="active"></span>
-                <span></span>
-              </div>
-
-              <hr />
-              <div class="dashboard__items__summary--votes">
-                <app-match-summary-votes [matchId]=getMatchId(ss.matchId)></app-match-summary-votes>
-              </div>
-              <div class="dashboard__items__summary--nav">
-                <span></span>
-                <span class="active"></span>
-              </div>
-              <hr />
-              <div class="dashboard__items__summary--votes-detail">
-                <h5>Week 3 Votes</h5>
-                <div class="dashboard__items__summary--votes-note">
-                  <h6>Reason</h6>
-                  <p class="dashboard__items__summary--votes-note-title">Training Day</p>
-                  <p>
-                    Denzel's GREATEST acting performance ever.
-                    He won the Oscar for BEST ACTOR because of his legendary role in this movie.
-                    but dont let Denzel's performance overshadow ethan hawke's own oscar level performance.
-                    Amazing chemistry.
-                  </p>
-                  <button>
-                    <!--<Close class=""></Close>-->
-                  </button>
                 </div>
               </div>
-              <div class="dashboard__items__summary--nav">
-                <span></span>
-                <span class="active"></span>
+            </button>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div *ngIf="ss.matchStatus.indexOf('Open') > -1; else summary">
+              <div *ngIf="ss.matchStatus == 'Open For Movie Submission'">
+                <div class="dashboard__cta--description">
+                  <h5>
+                    {{ss.genreName}}
+                    <span>- {{ss.genreDescription}}</span>
+                  </h5>
+                  <button class="button" routerLink="/submitMovie/{{ss.matchId}}">Go to submit movie</button>
+
+                </div>
+              </div>
+              <div *ngIf="ss.matchStatus == 'Open For Voting'">
+                <button type="button" class="button">Submit Votes</button>
               </div>
             </div>
+            <ng-template #summary>
+
+              <div class="dashboard__items__summary">
+                <div class="dashboard__items__summary--results">
+                  <app-match-summary [matchId]=getMatchId(ss.matchId)></app-match-summary>
+
+                </div>
+                <div class="dashboard__items__summary--nav">
+                  <span class="active"></span>
+                  <span></span>
+                </div>
+
+                <hr />
+                <div class="dashboard__items__summary--votes">
+                  <app-match-summary-votes [matchId]=getMatchId(ss.matchId)></app-match-summary-votes>
+                </div>
+                <div class="dashboard__items__summary--nav">
+                  <span></span>
+                  <span class="active"></span>
+                </div>
+                <hr />
+                <div class="dashboard__items__summary--votes-detail">
+                  <h5>Week 3 Votes</h5>
+                  <div class="dashboard__items__summary--votes-note">
+                    <h6>Reason</h6>
+                    <p class="dashboard__items__summary--votes-note-title">Training Day</p>
+                    <p>
+                      Denzel's GREATEST acting performance ever.
+                      He won the Oscar for BEST ACTOR because of his legendary role in this movie.
+                      but dont let Denzel's performance overshadow ethan hawke's own oscar level performance.
+                      Amazing chemistry.
+                    </p>
+                    <button>
+                      <!--<Close class=""></Close>-->
+                    </button>
+                  </div>
+                </div>
+                <div class="dashboard__items__summary--nav">
+                  <span></span>
+                  <span class="active"></span>
+                </div>
+              </div>
+            </ng-template>
           </ng-template>
+        </ngb-panel>
+
+      </ngb-accordion>
     </div>
-      </div>
+    <div class="col-sm-3">
+      <app-season-standings></app-season-standings>
     </div>
   </div>
+
+
 </main>
 
 
-<main class="dashboard">
-  <ul class="dashboard__items">
-    <li class="dashboard__items--item" *ngFor="let ss of seasonSummaries" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <h3>{{ss.matchName}}</h3>
-      <p>{{ss.genreName}}</p>
-      <p>{{ss.matchPoints}} pts</p>
-      <h4>5th</h4>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-        </div>
-      </div>
-    </li>
-  </ul>
-</main>
 
 
-<main class="dashboard">
+
+
+<!--<main class="dashboard">
   <nav class="dashboard__header">
     <h2>Season 5</h2>
     <h2>Week 8</h2>
@@ -251,9 +262,9 @@
               but dont let Denzel's performance overshadow ethan hawke's own oscar level performance.
               Amazing chemistry.
             </p>
-            <button>
-              <!--<Close class=""></Close>-->
-            </button>
+            <button>-->
+<!--<Close class=""></Close>-->
+<!--</button>
           </div>
         </div>
         <div class="dashboard__items__summary--nav">
@@ -392,5 +403,4 @@
       </div>
     </div>
   </aside>
-</main>
-
+</main>-->

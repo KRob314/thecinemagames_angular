@@ -4,6 +4,7 @@ using CinemaGames.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaGames.Data.Migrations
 {
     [DbContext(typeof(CinemaGamesDbContext))]
-    partial class CinemaGamesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220306233641_AddSeasonStanding")]
+    partial class AddSeasonStanding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,35 +227,6 @@ namespace CinemaGames.Data.Migrations
                     b.ToTable("Seasons");
                 });
 
-            modelBuilder.Entity("CinemaGames.Data.Models.SeasonStanding", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rank")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SeasonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("SeasonId");
-
-                    b.ToTable("SeasonStandings");
-                });
-
             modelBuilder.Entity("CinemaGames.Data.Models.Status", b =>
                 {
                     b.Property<int>("Id")
@@ -335,25 +308,6 @@ namespace CinemaGames.Data.Migrations
                     b.Navigation("Match");
 
                     b.Navigation("Player");
-                });
-
-            modelBuilder.Entity("CinemaGames.Data.Models.SeasonStanding", b =>
-                {
-                    b.HasOne("CinemaGames.Data.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("CinemaGames.Data.Models.Season", "Season")
-                        .WithMany()
-                        .HasForeignKey("SeasonId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-
-                    b.Navigation("Season");
                 });
 #pragma warning restore 612, 618
         }

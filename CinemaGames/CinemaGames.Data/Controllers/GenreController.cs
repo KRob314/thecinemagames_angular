@@ -55,11 +55,14 @@ namespace CinemaGames.Data.Controllers
         public void Put(int id, [FromBody] Genre genre)
         {
             var genreTemp = _db.Genres.Find(genre.Id);
-            genreTemp.Name = genre.Name;
-            genreTemp.Description = genre.Description;
-            _db.Genres.Add(genreTemp);
-            
-            _db.SaveChanges();
+            if(genreTemp != null)
+            {
+                genreTemp.Name = genre.Name;
+                genreTemp.Description = genre.Description;
+
+                _db.SaveChanges();
+            }
+
         }
 
         // DELETE api/<GenreController>/5

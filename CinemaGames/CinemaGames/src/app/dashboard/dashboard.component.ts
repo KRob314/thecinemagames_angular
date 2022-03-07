@@ -9,6 +9,8 @@ import { SeasonSummaryService } from '../season-summary.service';
 })
 export class DashboardComponent implements OnInit {
   seasonSummaries: SeasonSummary[] = [];
+  public isCollapsed = false;
+
   constructor(private seasonSummaryService: SeasonSummaryService) { }
 
   ngOnInit(): void

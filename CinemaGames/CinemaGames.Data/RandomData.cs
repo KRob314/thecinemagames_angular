@@ -92,27 +92,39 @@ namespace CinemaGames.Data
             return names[randomIndex];
         }
 
-        public string Genre()
+        public KeyValuePair<string, string> Genre()
         {
-            List<string> names = new List<string>()
-            {
-                "Comedy",
-                "Drama",
-                "Western",
-                "Science Fiction",
-                "Thriller",
-                "Romance",
-                "Crime",
-                "Historical",
-                "Adcenture",
-                "Animation",
-                "Musical",
-                "Action"
-            };
-            int randomIndex = Number(0, names.Count);
+            Dictionary<string, string> genreAndDescriptions = new Dictionary<string, string>();
+            genreAndDescriptions.Add("Drame", "Stories composed in verse or prose, usually for theatrical performance, where conflicts and emotion are expressed through dialogue and action.");
+            genreAndDescriptions.Add("Fable", "Narration demonstrating a useful truth, especially in which animals speak as humans; legendary, supernatural tale.");
+            genreAndDescriptions.Add("Fairy Tale", "Story about fairies or other magical creatures, usually for children.");
+            genreAndDescriptions.Add("Fantasy", "Fiction with strange or other worldly settings or characters; fiction which invites suspension of reality.");
+            genreAndDescriptions.Add("Fiction", "Narrative literary works whose content is produced by the imagination and is not necessarily based on fact.");
+            genreAndDescriptions.Add("Fiction in Verse", "Full-length novels with plot, subplot(s), theme(s), major and minor characters, in which the narrative is presented in (usually blank) verse form.");
+            genreAndDescriptions.Add("Folklore", "The songs, stories, myths, and proverbs of a people or folk as handed down by word of mouth.");
+            genreAndDescriptions.Add("Historical Fiction", "Story with fictional characters and events in a historical setting.");
+            genreAndDescriptions.Add("Horror", "Fiction in which events evoke a feeling of dread in both the characters and the reader.");
+            genreAndDescriptions.Add("Humor", "Fiction full of fun, fancy, and excitement, meant to entertain; but can be contained in all genres");
+            genreAndDescriptions.Add("Legend", "Story, sometimes of a national or folk hero, which has a basis in fact but also includes imaginative material.");
+            genreAndDescriptions.Add("Mystery", "Fiction dealing with the solution of a crime or the unraveling of secrets");
+            genreAndDescriptions.Add("Mythology", "Legend or traditional narrative, often based in part on historical events, that reveals human behavior and natural phenomena by its symbolism; often pertaining to the actions of the gods.");
+            genreAndDescriptions.Add("Poetry", "Verse and rhythmic writing with imagery that creates emotional responses.");
+            genreAndDescriptions.Add("Realistic Fiction", "Story that can actually happen and is true to life.");
+            genreAndDescriptions.Add("Science Fiction", "Story based on impact of actual, imagined, or potential science, usually set in the future or on other planets.");
+            genreAndDescriptions.Add("Short Story", "Fiction of such brevity that it supports no subplots.");
 
-            return names[randomIndex];
+            List<KeyValuePair<string, string>> genres = new List<KeyValuePair<string, string>>();
+            foreach(var genre in genreAndDescriptions)
+            {
+                genres.Add(genre);
+            }
+
+            int randomIndex = Number(0, genres.Count);
+            var result = genres[randomIndex];
+
+            return result;
         }
+
 
         public string RandomString(int size, bool lowerCase = false)
         {

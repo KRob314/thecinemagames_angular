@@ -1,7 +1,7 @@
-<h5>Week 3 Votes</h5>
-<table class="table table-borderless">
+<h5 class="text-main" style="font-weight:400">{{matchVotes[0]?.weekName}} Votes</h5>
+<table class="table table-borderless table-light">
   <thead>
-    <tr>
+    <tr class="text-main">
       <td>Player</td>
       <td>Points</td>
       <td>Movie Title</td>
@@ -14,7 +14,8 @@
       <td>{{summary.moviePoints}}</td>
       <td>{{summary.movie}}</td>
       <td>
-        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" (click)="showOffCanvas(index)">Show</button>
+        <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" (click)="showOffCanvas(summary)">Show</button>
+
       </td>
     </tr>
 
@@ -22,12 +23,21 @@
 </table>
 <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="matchVotes.length" [maxSize]="15"></ngb-pagination>
 
-<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" >
+<!--<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" >
   <div class="offcanvas-header">
     <h5 id="offcanvasTopLabel" ></h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body" id="movieReason">
-    
+
+  </div>
+</div>-->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasTopLabel" >
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel" ></h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="movieReason">
+
   </div>
 </div>

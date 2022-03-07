@@ -26,7 +26,7 @@ namespace CinemaGames.Data
         public DbSet<Player> Players { get; set; } = default!;
         public DbSet<Season> Seasons { get; set; } = default!;
         public DbSet<Status> Statuses { get; set; } = default!;
-
+        public DbSet<SeasonStanding> SeasonStandings { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

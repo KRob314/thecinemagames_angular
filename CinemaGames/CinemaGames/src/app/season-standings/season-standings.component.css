@@ -1,0 +1,27 @@
+.dashboard__side { grid-area: img; }
+
+.dashboard__side__trophies { width: 100%; padding: 1rem; min-height: 5.6rem; display: grid; justify-items: center; align-items: center; }
+  .dashboard__side__trophies button { min-height: 3rem; color: #6a3ea8; background-color: #E5CC26; box-shadow: 0px 0.4rem 0.4rem rgba(0, 0, 0, 0.25); }
+
+.dashboard__side__standings { width: 100%; padding: 1rem 2rem; display: grid; text-align: center; background-color: rgba(0, 0, 0, 0.05); color: #1B1B1C; border-top: 5px solid rgba(106, 62, 168, 0.3); margin-left: 1rem; }
+  .dashboard__side__standings h2 { font-weight: 100; font-size: 24px; padding: 1rem 0 0 0; margin: 0; }
+  .dashboard__side__standings hr { color: rgba(106, 62, 168, 0.3); background-color: rgba(106, 62, 168, 0.3); }
+  .dashboard__side__standings table { border-collapse: collapse; }
+    .dashboard__side__standings table td { border: none; }
+    .dashboard__side__standings table thead tr { line-height: 3rem; font-size: 1.2rem; color: #6a3ea8; }
+    .dashboard__side__standings table tbody tr { font-size: 1.2rem; line-height: 2.1rem; cursor: pointer; }
+      .dashboard__side__standings table tbody tr:hover { background: rgba(117, 19, 255, 0.12); }
+
+.dashboard__side__bulletin { width: 100%; padding: 1rem 2rem; display: grid; text-align: center; background-color: #fff; color: #1B1B1C; margin-left: 1rem; margin-top: 1rem; font-size: 0.8rem; }
+  .dashboard__side__bulletin h2 { font-weight: 100; font-size: 2.4rem; padding: 1rem 0 0 0; margin: 0; }
+  .dashboard__side__bulletin hr { color: rgba(106, 62, 168, 0.3); background-color: rgba(106, 62, 168, 0.3); }
+
+.dashboard__side--messages { text-align: start; max-height: 25rem; overflow-y: auto; }
+
+  .dashboard__side--messages p { background-color: rgba(184, 184, 184, 0.37);; padding: 0.5rem 1rem; }
+  .dashboard__side--messages span { padding: 0 0 0 0.2rem; color: #9d9d9d; }
+.dashboard__side--message p { margin-bottom: 0.1rem; }
+.dashboard__side--message.my-message p { background-color: #C3AEE2; }
+.dashboard__side__messages--input { width: 100%; display: grid; grid-template-columns: 1fr; }
+  .dashboard__side__messages--input input { padding: 2rem 0 2rem 0.5rem; background-color: #F4F4F4; line-height: 2rem; border-width: 0px; border: none; }
+  .dashboard__side__messages--input button { background-color: #6a3ea8; color: #ffffff; width: 40%; margin-top: 1rem; align-self: center; justify-self: end; font-weight: 100; height: 2.5rem; }

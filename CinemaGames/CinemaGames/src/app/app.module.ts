@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenreDetailsComponent } from './genre-details/genre-details.component';
@@ -18,6 +18,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppToastComponent } from './app-toast/app-toast.component';
 import { MatchSummaryComponent } from './match-summary/match-summary.component';
 import { MatchSummaryVotesComponent } from './match-summary-votes/match-summary-votes.component';
+import { SubmitMovieComponent } from './submit-movie/submit-movie.component';
+import { SubmitVotesComponent } from './submit-votes/submit-votes.component';
+import { SeasonStandingsComponent } from './season-standings/season-standings.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,13 @@ import { MatchSummaryVotesComponent } from './match-summary-votes/match-summary-
     DashboardComponent,
     AppToastComponent,
     MatchSummaryComponent,
-    MatchSummaryVotesComponent
+    MatchSummaryVotesComponent,
+    SubmitMovieComponent,
+    SubmitVotesComponent,
+    SeasonStandingsComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule,
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,
     //RouterModule.forRoot([
     //  { path: 'genres', component: GenresComponent },
     //  { path: 'genre-details/:id', component: GenreDetailsComponent },
